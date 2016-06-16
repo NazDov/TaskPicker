@@ -1,5 +1,7 @@
 package com.softserveinc.edu.ita.taskmanager.runner;
 
+import java.io.IOException;
+
 import com.softserveinc.edu.ita.taskmanager.model.AbstractTask;
 import com.softserveinc.edu.ita.taskmanager.view.impl.FileOutputStrategy;
 import com.softserveinc.edu.ita.taskmanager.view.inter.ViewStrategy;
@@ -20,6 +22,13 @@ import com.softserveinc.edu.ita.taskmanager.view.inter.ViewStrategy;
  * or
  * 
  * TaskRunner.run(new MyHomeWork());
+ * 
+ * try {
+			TaskRunner.run(new MyHomeWork(), new FileOutputStrategy("newFile.txt"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
  * 
  * </pre>
  *
