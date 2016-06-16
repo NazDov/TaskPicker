@@ -7,22 +7,27 @@ import java.io.IOException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.commons.logging.Log;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import ch.qos.logback.classic.Logger;
-
+/**
+ * 
+ * class designed to read XML file task_names.xml and load values (id and name)
+ * into the TaskFactory cache
+ * 
+ * @author Nazar Dovhyy
+ *
+ */
 public class XMLToTaskFactorySaver {
-	
-	
-	public static final String UPPER_TAG ="task";
-	public static final String ID_TAG ="id";
-	public static final String NAME_TAG ="name";
-	public static final File XML_TASKS_FILE = new File("../TaskManager/task_names.xml");
+
+	public static final String UPPER_TAG = "task";
+	public static final String ID_TAG = "id";
+	public static final String NAME_TAG = "name";
+	public static final File XML_TASKS_FILE = new File(
+			"../TaskManager/task_names.xml");
 
 	private Document document;
 	private File xmlFileName;
@@ -34,16 +39,14 @@ public class XMLToTaskFactorySaver {
 			throws ParserConfigurationException, SAXException, IOException {
 
 		this.xmlFileName = xmlFileName;
-		
-		if(!xmlFileName.exists()){
+
+		if (!xmlFileName.exists()) {
 			throw new FileNotFoundException("xml file not found");
 		}
 
 		document = buildDocument();
 
 	}
-
-
 
 	private Document buildDocument() throws ParserConfigurationException,
 			SAXException, IOException {
@@ -53,8 +56,7 @@ public class XMLToTaskFactorySaver {
 
 	}
 
-	public static XMLToTaskFactorySaver load(File xmlFileName)
-			throws Exception {
+	public static XMLToTaskFactorySaver load(File xmlFileName) throws Exception {
 		return new XMLToTaskFactorySaver(xmlFileName);
 	}
 
@@ -72,7 +74,7 @@ public class XMLToTaskFactorySaver {
 			Node node = nodeList.item(i);
 
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
-				 idValue =getStringByTag(idTag, node);
+				idValue = getStringByTag(idTag, node);
 				nameValue = getStringByTag(nameTag, node);
 			}
 
@@ -83,21 +85,19 @@ public class XMLToTaskFactorySaver {
 	}
 
 	private String getStringByTag(String idTag, Node node) {
-		return ((Element) node).getElementsByTagName(idTag).item(0).getTextContent();
+		return ((Element) node).getElementsByTagName(idTag).item(0)
+				.getTextContent();
 	}
-	
-	
-	public XMLToTaskFactorySaver loadToTaskFactoryCache(){
-		
+
+	public XMLToTaskFactorySaver loadToTaskFactoryCache() {
+
 		try {
 			TaskFactory.getTaskObject(idValue, Class.forName(nameValue));
 			return this;
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("error in loadToTaskFactoryCache()");
 		}
-		
-		
-		
+
 	}
 
 }
