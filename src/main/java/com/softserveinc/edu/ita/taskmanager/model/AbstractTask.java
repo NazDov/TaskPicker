@@ -31,7 +31,7 @@ import com.softserveinc.edu.ita.taskmanager.view.ViewStrategy;
 			return ...;// the output of your program
 		}
 		
-		public Object callTasks() {	
+		public Object returnCalculatedOutput() {	
 			return calcLogN();
 		}
 		
