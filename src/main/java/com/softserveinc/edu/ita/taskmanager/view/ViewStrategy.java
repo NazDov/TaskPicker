@@ -5,7 +5,7 @@ public interface ViewStrategy {
 	ViewStrategy TO_CONSOLE = new ConsoleView();
 	
 	
-	class ConsoleView implements ViewStrategy{
+	static class ConsoleView implements ViewStrategy{
 
 		@Override
 		public void show(Object callTasks) {

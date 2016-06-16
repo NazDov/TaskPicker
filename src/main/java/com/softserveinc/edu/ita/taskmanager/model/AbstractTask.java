@@ -1,4 +1,7 @@
 package com.softserveinc.edu.ita.taskmanager.model;
+
+import com.softserveinc.edu.ita.taskmanager.view.ViewStrategy;
+
 /**
  * 
  * @author Nazar Dovhyy
@@ -14,12 +17,12 @@ public abstract class AbstractTask {
 		throw new UnsupportedOperationException();
 	}
 	
-	public final void runTask(){
+	public final void runTask(ViewStrategy viewStrategy){
 		
-		callTasks();
+		viewStrategy.show(callTasks());
 		
 	}
 	
-	public abstract void callTasks();
+	public abstract Object callTasks();
 	
 }
