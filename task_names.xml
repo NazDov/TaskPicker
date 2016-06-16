@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tasks>
+
+<task>
+	<id>task199</id>
+	<name>com.softserveinc.edu.ita.taskmanager.model.MyHomeWork</name>
+	<description>find sum of elements equally divided by 5</description>
+</task>
+
+
+</tasks>
