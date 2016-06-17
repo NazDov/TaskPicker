@@ -45,11 +45,9 @@ public class WindowApplication extends JFrame implements ActionListener {
 	public WindowApplication() {
 
 		try {
-			XMLToTaskFactorySaver.load(XMLToTaskFactorySaver.XML_TASKS_FILE)
-					.forUpperLevelTagName(XMLToTaskFactorySaver.UPPER_TAG)
-					.readAllTagsAndLoadIntoCache();
+			XMLInitializeContext.init(XMLInitializeContext.XML_TASKS_FILE)
+					.parseTag(XMLInitializeContext.TAG_ATTR).loadIntoCache();
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
