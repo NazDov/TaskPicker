@@ -1,7 +1,6 @@
 package com.softserveinc.edu.ita.taskmanager.view;
 
 
-import com.softserveinc.edu.ita.taskmanager.app.Application;
 import com.softserveinc.edu.ita.taskmanager.controller.XMLInitializeContext;
 import com.softserveinc.edu.ita.taskmanager.factory.TaskFactory;
 import com.softserveinc.edu.ita.taskmanager.model.AbstractTask;

@@ -1,4 +1,4 @@
-package com.softserveinc.edu.ita.taskmanager.app;
+package com.softserveinc.edu.ita.taskmanager.view;
 
 /**
  * Created by nazar.dovhyy on 17.06.2016.
