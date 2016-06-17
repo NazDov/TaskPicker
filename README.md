@@ -57,7 +57,6 @@ TaskPicker (TaskManager) побудований по принципу IoC - Inve
 
 фото роботи
 
-https://postimg.org/image/7urnj2aw1/
-https://postimg.org/image/hwqrno35j/
+https://postimg.org/image/kvpem23gn/
 	
 	
