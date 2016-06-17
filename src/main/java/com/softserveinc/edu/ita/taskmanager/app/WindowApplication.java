@@ -53,13 +53,11 @@ public class WindowApplication extends JFrame implements ActionListener {
 			e1.printStackTrace();
 		}
 
-		System.out.println("xml loaded");
-
 		List<String> allKeys = TaskFactory.getAllKeys();
 
 		comboBoxMsgs = allKeys.toArray(new String[allKeys.size()]);
 
-		System.out.println(Arrays.toString(comboBoxMsgs));
+		System.out.println("combo box items: "+Arrays.toString(comboBoxMsgs));
 
 		initComponents();
 
