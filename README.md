@@ -53,5 +53,10 @@ public class MyHomeWork extends AbstractTask {
     
     
 .... і все.... запустити задачу та насолоджуватися роботою!
+
+фото роботи
+
+https://postimg.org/image/7urnj2aw1/
+https://postimg.org/image/hwqrno35j/
 	
 	
