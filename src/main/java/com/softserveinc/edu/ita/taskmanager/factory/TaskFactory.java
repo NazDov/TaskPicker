@@ -25,8 +25,7 @@ public class TaskFactory {
 	 *  or stores the task in cache
 	 *
 	 *  the method returns null if both no mapping by typeId exists and type object
-	 *  is null
-	 *
+	 *  is null.
 	 *
 	 * WARNING
 	 * this implementation of Map interface allows null parameters as both keys and values
@@ -56,7 +55,7 @@ public class TaskFactory {
 	/**
 	 * this method is called when no mapping per given key exists
 	 * the output of this method is that every time new Map<Type, String>
-	 * is stored as the value under the mapping
+	 * is stored as the value under the mapping.
 	 *
 	 * @param taskId a key to find/store data with
 	 * @param valueType - our valueType to be mapped/retrieved/ with the key
@@ -82,7 +81,7 @@ public class TaskFactory {
 	}
 
 	/**
-	 * method returns task type by the represented taskId
+	 * method returns task type by the represented taskId.
 	 * @param taskId id parameter
 	 * @return class type of Task object or null
 	 *  if no task object could be found by the key
@@ -104,8 +103,15 @@ public class TaskFactory {
 		return getTaskById(taskId, null, null);
 	}
 
+	/**
+	 * method returns description for the existing task or null if no task can be found by taskId.
+	 * @param taskId a key to find value with
+	 * @param type a class object used as a key for description retrieval
+     * @return
+     */
 	public static String getExistingTaskDescription(String taskId, Class<? extends AbstractTask> type) {
-		return tasks.get(taskId).get(type);
+		Map<Class<? extends AbstractTask>, String> typeStringMap = tasks.get(taskId);
+		return typeStringMap !=null? typeStringMap.get(type): null;
 	}
 	
 	
