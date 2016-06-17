@@ -34,6 +34,16 @@ public class ApplicationRunner implements Runnable {
 
     }
 
+
+    private static class ApplicationRunnerTool{
+
+        public static void main(String [] args){
+
+            ApplicationRunner.runApplication(new WindowApplication());
+        }
+
+    }
+
     private void runApplication() {
 
         if(application.getClass() == ConsoleApplication.class){

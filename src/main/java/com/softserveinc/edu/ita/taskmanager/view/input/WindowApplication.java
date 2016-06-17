@@ -38,20 +38,6 @@ public class WindowApplication extends JFrame implements ActionListener, Applica
      */
     public WindowApplication() {
 
-        try {
-            XMLInitializeContext.init(XMLInitializeContext.XML_TASKS_FILE)
-                    .parseTag(XMLInitializeContext.TAG_ATTR).loadIntoCache();
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-
-        List<String> allKeys = TaskFactory.getAllKeys();
-
-        comboBoxMsgs = allKeys.toArray(new String[allKeys.size()]);
-
-        System.out.println("combo box items: " + Arrays.toString(comboBoxMsgs));
-
-        initComponents();
 
     }
 
@@ -221,8 +207,25 @@ public class WindowApplication extends JFrame implements ActionListener, Applica
         outputField.setText("" + TaskRunner.run(obj));
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
+        if (e.getSource() == taskNamesBox) {
+
+            JComboBox cb = (JComboBox) e.getSource();
+
+            switchedTaskItem = (String) cb.getSelectedItem();
+
+            descrField.setText(TaskFactory.getExistingTaskDescription(
+                    switchedTaskItem,
+                    TaskFactory.getTaskById(switchedTaskItem)));
+
+        }
+
+    }
+
+    @Override
+    public void start() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
                     .getInstalledLookAndFeels()) {
@@ -249,30 +252,31 @@ public class WindowApplication extends JFrame implements ActionListener, Applica
                     java.util.logging.Level.SEVERE, null, ex);
         }
         // </editor-fold>
-
+        /*
 		/* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new WindowApplication().setVisible(true);
+                setVisible(true);
             }
         });
-    }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == taskNamesBox) {
-
-            JComboBox cb = (JComboBox) e.getSource();
-
-            switchedTaskItem = (String) cb.getSelectedItem();
-
-            descrField.setText(TaskFactory.getExistingTaskDescription(
-                    switchedTaskItem,
-                    TaskFactory.getTaskById(switchedTaskItem)));
-
+        try {
+            XMLInitializeContext.init(XMLInitializeContext.XML_TASKS_FILE)
+                    .parseTag(XMLInitializeContext.TAG_ATTR).loadIntoCache();
+        } catch (Exception e1) {
+            e1.printStackTrace();
         }
 
-    }
+        List<String> allKeys = TaskFactory.getAllKeys();
 
+        comboBoxMsgs = allKeys.toArray(new String[allKeys.size()]);
+
+        System.out.println("combo box items: " + Arrays.toString(comboBoxMsgs));
+
+        initComponents();
+
+
+    }
 }

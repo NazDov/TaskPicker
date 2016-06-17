@@ -8,4 +8,8 @@ package com.softserveinc.edu.ita.taskmanager.view.input;
  *
  */
 public class ConsoleApplication implements Application {
+    @Override
+    public void start() {
+
+    }
 }
