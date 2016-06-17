@@ -14,7 +14,7 @@ TaskPicker (TaskManager) побудований по принципу IoC - Inve
 приклад:
 
 
-public class MyHomeWork extends AbstractTask {
+	public class MyHomeWork extends AbstractTask {
 	
 	Random rand = new Random();
 	
@@ -43,7 +43,8 @@ public class MyHomeWork extends AbstractTask {
 		
 	}
 	
-	2) прописати необхідні атрибути у файлі task_names.xml
+	
+2) прописати необхідні атрибути у файлі task_config.xml
 	
     <task>
     	<id>task 199</id>
