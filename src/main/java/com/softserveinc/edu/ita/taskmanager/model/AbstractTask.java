@@ -2,7 +2,7 @@ package com.softserveinc.edu.ita.taskmanager.model;
 
 import java.util.Random;
 
-import com.softserveinc.edu.ita.taskmanager.view.ViewStrategy;
+import com.softserveinc.edu.ita.taskmanager.view.inter.ViewStrategy;
 
 /**
  * 
@@ -41,6 +41,36 @@ import com.softserveinc.edu.ita.taskmanager.view.ViewStrategy;
  */
 public abstract class AbstractTask {
 
+	protected String id;
+	protected String name;
+	protected String description;
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
+
+	public String getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
 	/**
 	 * some basic method 1
 	 * FIXME override this before using
@@ -62,17 +92,18 @@ public abstract class AbstractTask {
 	/**
 	 * run this method if you want your output to be sent to console.
 	 */
-	public final void runTask(){
+	public final Object runTask(){
 		
 		ViewStrategy.TO_CONSOLE.show(returnCalculatedOutput());
 		
+		return this.returnCalculatedOutput();
 	}
 	
 	/**
 	 * run this method if you have a specific output ViewStrategy
 	 * defined and passed as an argument.
 	 * 
-	 * @param viewStrategy view object e.g. console / GUI / webpage
+	 * @param viewStrategy view object e.g. console / GUI / web-page
 	 */
 	public final void runTask(ViewStrategy viewStrategy){
 		
@@ -86,5 +117,14 @@ public abstract class AbstractTask {
 	 * @return object result of the calculation
 	 */
 	public abstract Object returnCalculatedOutput();
+
+	@Override
+	public String toString() {
+		return "AbstractTask [id=" + id + ", name=" + name + ", description="
+				+ description + ", returnCalculatedOutput()="
+				+ returnCalculatedOutput() + "]";
+	}
+	
+	
 	
 }
