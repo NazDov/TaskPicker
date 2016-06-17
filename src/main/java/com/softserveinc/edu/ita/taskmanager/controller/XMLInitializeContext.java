@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 
 /**
  * 
- * class designed to read XML file task_names.xml and load values (id and name)
+ * class designed to read XML file task_config.xml and load values (id and name)
  * into the TaskFactory cache
  * 
  * @author Nazar Dovhyy
@@ -29,7 +29,7 @@ public class XMLInitializeContext {
 	public static final String NAME_TAG = "name";
 	public static final String DESCR_TAG = "description";
 	public static final File XML_TASKS_FILE = new File(
-			"task_names.xml");
+			"task_config.xml");
 
 	private Document document;
 	private File xmlFileName;
