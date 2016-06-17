@@ -32,7 +32,7 @@ public class TaskFactory {
      * this implementation of Map interface allows null parameters as both keys and values
      *
      * @param taskId parameter to retrieve/store object
-     * @param type   object representing AbstractTask interface
+     * @param type   object representing AbstractTask.class
      * @return AbstractTask object class type
      * @see AbstractTask
      */
