@@ -43,8 +43,8 @@ public class TaskRunner {
 	 * runs the task object with default output strategy
 	 * @param abstractTask task implementation
 	 */
-	public static void run(AbstractTask abstractTask){
-		abstractTask.runTask();
+	public static Object run(AbstractTask abstractTask){
+		return abstractTask.runTask();
 	
 	}
 	
