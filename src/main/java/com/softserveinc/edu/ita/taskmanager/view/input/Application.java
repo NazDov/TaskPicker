@@ -5,5 +5,6 @@ package com.softserveinc.edu.ita.taskmanager.view.input;
  * a simple marker interface
  */
 public interface Application {
-    // as empty as my bank account :)
+    void start();
+
 }
