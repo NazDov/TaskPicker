@@ -3,9 +3,8 @@ package com.softserveinc.edu.ita.taskmanager.view.inter;
 public interface ViewStrategy {
 
 	ViewStrategy TO_CONSOLE = new ConsoleView();
-	
-	
-	static class ConsoleView implements ViewStrategy{
+
+	 class ConsoleView implements ViewStrategy{
 
 		@Override
 		public void show(Object callTasks) {
