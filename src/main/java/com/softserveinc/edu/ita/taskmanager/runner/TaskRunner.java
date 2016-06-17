@@ -1,10 +1,7 @@
 package com.softserveinc.edu.ita.taskmanager.runner;
 
-import java.io.IOException;
-
 import com.softserveinc.edu.ita.taskmanager.model.AbstractTask;
-import com.softserveinc.edu.ita.taskmanager.view.impl.FileOutputStrategy;
-import com.softserveinc.edu.ita.taskmanager.view.inter.ViewStrategy;
+import com.softserveinc.edu.ita.taskmanager.view.output.ViewStrategy;
 
 /**
  * 

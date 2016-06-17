@@ -1,6 +1,6 @@
 package com.softserveinc.edu.ita.taskmanager.model;
 
-import com.softserveinc.edu.ita.taskmanager.view.inter.ViewStrategy;
+import com.softserveinc.edu.ita.taskmanager.view.output.ViewStrategy;
 
 /**
  * @author Nazar Dovhyy

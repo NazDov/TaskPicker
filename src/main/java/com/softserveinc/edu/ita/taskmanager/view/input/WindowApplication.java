@@ -1,4 +1,4 @@
-package com.softserveinc.edu.ita.taskmanager.view;
+package com.softserveinc.edu.ita.taskmanager.view.input;
 
 
 import com.softserveinc.edu.ita.taskmanager.controller.XMLInitializeContext;

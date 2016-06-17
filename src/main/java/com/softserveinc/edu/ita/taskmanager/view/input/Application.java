@@ -1,4 +1,4 @@
-package com.softserveinc.edu.ita.taskmanager.view;
+package com.softserveinc.edu.ita.taskmanager.view.input;
 
 /**
  * Created by nazar.dovhyy on 17.06.2016.
