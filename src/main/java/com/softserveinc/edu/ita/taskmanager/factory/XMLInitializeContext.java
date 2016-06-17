@@ -21,9 +21,9 @@ import org.xml.sax.SAXException;
  * @author Nazar Dovhyy
  *
  */
-public class XMLToTaskFactorySaver {
+public class XMLInitializeContext {
 
-	public static final String UPPER_TAG = "task";
+	public static final String TAG_ATTR = "task";
 	public static final String ID_TAG = "id";
 	public static final String NAME_TAG = "name";
 	public static final String DESCR_TAG = "description";
@@ -37,7 +37,7 @@ public class XMLToTaskFactorySaver {
 	private String nameValue;
 	private String descrValue;
 
-	private XMLToTaskFactorySaver(File xmlFileName)
+	private XMLInitializeContext(File xmlFileName)
 			throws ParserConfigurationException, SAXException, IOException {
 
 		this.xmlFileName = xmlFileName;
@@ -58,18 +58,18 @@ public class XMLToTaskFactorySaver {
 
 	}
 
-	public static XMLToTaskFactorySaver load(File xmlFileName) throws Exception {
-		return new XMLToTaskFactorySaver(xmlFileName);
+	public static XMLInitializeContext init(File xmlFileName) throws Exception {
+		return new XMLInitializeContext(xmlFileName);
 	}
 
-	public XMLToTaskFactorySaver forUpperLevelTagName(String tagName) {
+	public XMLInitializeContext parseTag(String tagName) {
 
 		nodeList = document.getElementsByTagName(tagName);
 
 		return this;
 	}
 
-	public XMLToTaskFactorySaver readAllTagsAndLoadIntoCache() {
+	public XMLInitializeContext loadIntoCache() {
 
 		for (int i = 0; i < nodeList.getLength(); i++) {
 
@@ -94,7 +94,7 @@ public class XMLToTaskFactorySaver {
 				.getTextContent();
 	}
 
-	private XMLToTaskFactorySaver loadToTaskFactoryCache(String idVal, String nameVal, String descrVal) {
+	private XMLInitializeContext loadToTaskFactoryCache(String idVal, String nameVal, String descrVal) {
 
 		try {
 			TaskFactory.getTaskObject(idVal, Class.forName(nameVal),
