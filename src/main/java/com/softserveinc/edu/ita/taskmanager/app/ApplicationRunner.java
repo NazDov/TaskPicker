@@ -40,14 +40,14 @@ public class ApplicationRunner implements Runnable {
 
         public static void main(String [] args){
 
-            ApplicationRunner.runApplication(new WindowApplication());
+            ApplicationRunner.runApplication(new ConsoleApplication());
         }
 
     }
 
     private void runApplication() {
 
-        // initializing our controller
+        // initializing controller
 
         try {
             XMLInitializeContext.init(XMLInitializeContext.XML_TASKS_FILE)
@@ -59,11 +59,11 @@ public class ApplicationRunner implements Runnable {
 
         if(application.getClass() == ConsoleApplication.class){
 
-            new ConsoleApplication().start();
+            application.start();
 
         }else if(application.getClass() == WindowApplication.class){
 
-            new WindowApplication().start();
+            application.start();
         }
 
     }
