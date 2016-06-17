@@ -26,6 +26,7 @@ public class XMLToTaskFactorySaver {
 	public static final String UPPER_TAG = "task";
 	public static final String ID_TAG = "id";
 	public static final String NAME_TAG = "name";
+	public static final String DESCR_TAG = "description";
 	public static final File XML_TASKS_FILE = new File(
 			"../TaskManager/task_names.xml");
 
@@ -34,6 +35,7 @@ public class XMLToTaskFactorySaver {
 	private NodeList nodeList;
 	private String idValue;
 	private String nameValue;
+	private String descrValue;
 
 	private XMLToTaskFactorySaver(File xmlFileName)
 			throws ParserConfigurationException, SAXException, IOException {
@@ -67,17 +69,20 @@ public class XMLToTaskFactorySaver {
 		return this;
 	}
 
-	public XMLToTaskFactorySaver forTagNames(String idTag, String nameTag) {
+	public XMLToTaskFactorySaver readAllTagsAndLoadIntoCache() {
 
 		for (int i = 0; i < nodeList.getLength(); i++) {
 
 			Node node = nodeList.item(i);
 
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
-				idValue = getStringByTag(idTag, node);
-				nameValue = getStringByTag(nameTag, node);
-			}
+				idValue = getStringByTag(ID_TAG, node);
+				nameValue = getStringByTag(NAME_TAG, node);
+				descrValue = getStringByTag(DESCR_TAG, node);
 
+			}
+			
+			loadToTaskFactoryCache(idValue, nameValue, descrValue);
 		}
 
 		return this;
@@ -89,10 +94,11 @@ public class XMLToTaskFactorySaver {
 				.getTextContent();
 	}
 
-	public XMLToTaskFactorySaver loadToTaskFactoryCache() {
+	private XMLToTaskFactorySaver loadToTaskFactoryCache(String idVal, String nameVal, String descrVal) {
 
 		try {
-			TaskFactory.getTaskObject(idValue, Class.forName(nameValue));
+			TaskFactory.getTaskObject(idVal, Class.forName(nameVal),
+					descrVal);
 			return this;
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException("error in loadToTaskFactoryCache()");
