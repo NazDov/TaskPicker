@@ -1,5 +1,6 @@
 package com.softserveinc.edu.ita.taskmanager.app;
 
+import com.softserveinc.edu.ita.taskmanager.controller.XMLInitializeContext;
 import com.softserveinc.edu.ita.taskmanager.view.input.Application;
 import com.softserveinc.edu.ita.taskmanager.view.input.ConsoleApplication;
 import com.softserveinc.edu.ita.taskmanager.view.input.WindowApplication;
@@ -45,6 +46,16 @@ public class ApplicationRunner implements Runnable {
     }
 
     private void runApplication() {
+
+        // initializing our controller
+
+        try {
+            XMLInitializeContext.init(XMLInitializeContext.XML_TASKS_FILE)
+                    .parseTag(XMLInitializeContext.TAG_ATTR).loadIntoCache();
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+
 
         if(application.getClass() == ConsoleApplication.class){
 

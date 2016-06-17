@@ -262,12 +262,6 @@ public class WindowApplication extends JFrame implements ActionListener, Applica
         });
 
 
-        try {
-            XMLInitializeContext.init(XMLInitializeContext.XML_TASKS_FILE)
-                    .parseTag(XMLInitializeContext.TAG_ATTR).loadIntoCache();
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
 
         List<String> allKeys = TaskFactory.getAllKeys();
 
