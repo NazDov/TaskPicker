@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 
 import com.softserveinc.edu.ita.taskmanager.factory.TaskFactory;
-import com.softserveinc.edu.ita.taskmanager.factory.XMLToTaskFactorySaver;
+import com.softserveinc.edu.ita.taskmanager.factory.XMLInitializeContext;
 import com.softserveinc.edu.ita.taskmanager.model.AbstractTask;
 import com.softserveinc.edu.ita.taskmanager.model.MyHomeWork;
 import com.softserveinc.edu.ita.taskmanager.runner.TaskRunner;
