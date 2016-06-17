@@ -210,7 +210,7 @@ public class WindowApplication extends JFrame implements ActionListener {
 	private void startTaskBtnActionPerformed(java.awt.event.ActionEvent evt) {
 		// TODO add your handling code here:
 
-		Class<?> objClass = TaskFactory.getTaskObject(switchedTaskItem);
+		Class<?> objClass = TaskFactory.getTaskById(switchedTaskItem);
 
 		AbstractTask obj = null;
 		try {
@@ -271,7 +271,7 @@ public class WindowApplication extends JFrame implements ActionListener {
 
 			descrField.setText(TaskFactory.getExistingTaskDescription(
 					switchedTaskItem,
-					TaskFactory.getTaskObject(switchedTaskItem)));
+					TaskFactory.getTaskById(switchedTaskItem)));
 
 		}
 

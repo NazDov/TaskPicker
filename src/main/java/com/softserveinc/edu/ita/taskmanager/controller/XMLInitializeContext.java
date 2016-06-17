@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import com.softserveinc.edu.ita.taskmanager.factory.TaskFactory;
+import com.softserveinc.edu.ita.taskmanager.model.AbstractTask;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -98,7 +99,7 @@ public class XMLInitializeContext {
 	private XMLInitializeContext loadToTaskFactoryCache(String idVal, String nameVal, String descrVal) {
 
 		try {
-			TaskFactory.getTaskObject(idVal, Class.forName(nameVal),
+			TaskFactory.getTaskById(idVal, (Class<? extends AbstractTask>) Class.forName(nameVal),
 					descrVal);
 			return this;
 		} catch (ClassNotFoundException e) {

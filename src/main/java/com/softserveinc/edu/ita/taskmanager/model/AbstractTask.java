@@ -41,35 +41,6 @@ import com.softserveinc.edu.ita.taskmanager.view.inter.ViewStrategy;
  */
 public abstract class AbstractTask {
 
-	protected String id;
-	protected String name;
-	protected String description;
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	
-
-	public String getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
 
 	/**
 	 * some basic method 1
@@ -119,13 +90,7 @@ public abstract class AbstractTask {
 	 */
 	public abstract Object returnCalculatedOutput();
 
-	@Override
-	public String toString() {
-		return "AbstractTask [id=" + id + ", name=" + name + ", description="
-				+ description + ", returnCalculatedOutput()="
-				+ returnCalculatedOutput() + "]";
-	}
-	
+
 	
 	
 }

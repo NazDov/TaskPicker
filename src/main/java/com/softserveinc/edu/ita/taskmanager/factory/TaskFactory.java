@@ -8,70 +8,103 @@ import com.softserveinc.edu.ita.taskmanager.model.AbstractTask;
  * 
  * @author Nazar Dovhyy
  * 
- *         caching AbstarctTask implementations
+ *         represanting a cache-like data structure to store and retrieve
+ *         AbstractTask binaries during the application execution.
  *
  */
 public class TaskFactory {
 
-	public static Map<String, Map<Class<?>, String>> tasks = new HashMap<>();
-	private static Class<?> typeKey;
+	/**
+	 *
+	 */
+	public static Map<String, Map<Class<? extends AbstractTask>, String>> tasks = new HashMap<>();
+	private static Class<? extends AbstractTask> typeKey;
 
 	/**
-	 * returns Task.class object by the taskId e.g. (task199) or stores the task
-	 * in the cache if returns null
-	 * 
+	 *  method returns Task.class object mapped by the taskId
+	 *  or stores the task in cache
+	 *
+	 *  the method returns null if both no mapping by typeId exists and type object
+	 *  is null
+	 *
+	 *
+	 * WARNING
+	 * this implementation of Map interface allows null parameters as both keys and values
+	 *
 	 * @param taskId
 	 *            parameter to retrieve/store object
 	 * @param type
-	 *            object of AbstractTask
+	 *            object representing AbstractTask interface
 	 * @see AbstractTask
 	 * @return AbstractTask object class type
 	 */
-	public static Class<?> getTaskObject(String taskId, Class<?> type,
-			String descr) {
+	public static Class<? extends AbstractTask> getTaskById(String taskId, Class<? extends AbstractTask> type,
+															String descr) {
 
-		Map<Class<?>, String> typeMapping = tasks.get(taskId);
+		Map<Class<? extends AbstractTask>, String> taskValueById = tasks.get(taskId);
 
-		if (typeMapping == null) {
+		taskValueById = addTaskByIdIfNull(taskId, type, descr, taskValueById);
 
-			HashMap<Class<?>, String> localMap = new HashMap<Class<?>, String>();
-			localMap.put(type, descr);
-
-			tasks.put(taskId, localMap);
-
-			typeMapping = tasks.get(taskId);
-		}
-
-		for (Class<?> key : typeMapping.keySet()) {
+		for (Class<? extends AbstractTask> key : taskValueById.keySet()) {
 			typeKey = key;
 			break;
 		}
 
 		return typeKey;
 	}
-	
+
 	/**
-	 * 
+	 * this method is called when no mapping per given key exists
+	 * the output of this method is that every time new Map<Type, String>
+	 * is stored as the value under the mapping
+	 *
+	 * @param taskId a key to find/store data with
+	 * @param valueType - our valueType to be mapped/retrieved/ with the key
+	 * @param valueDescription - String description for the valueType object
+	 * @param taskValueById
+     * @return
+     */
+	private static Map<Class<? extends AbstractTask>, String> addTaskByIdIfNull(String taskId,
+																				Class<? extends AbstractTask> valueType,
+																				String valueDescription,
+																				Map<Class<? extends AbstractTask>, String> taskValueById) {
+		if (taskValueById == null) {
+
+			HashMap localMap = new HashMap<>();
+
+			localMap.put(valueType, valueDescription);
+
+			tasks.put(taskId, localMap);
+
+			taskValueById = tasks.get(taskId);
+		}
+		return taskValueById;
+	}
+
+	/**
+	 * method returns task type by the represented taskId
 	 * @param taskId id parameter
 	 * @return class type of Task object or null
 	 *  if no task object could be found by the key
 	 */
-	public static Class<?> getTaskObject(String taskId){
-		
+	public static Class<? extends AbstractTask> getTaskById(String taskId){
+
+		/*
 		Class<?> taskObj =null;
 		
-		Map<Class<?>, String> typeMapping = tasks.get(taskId);
+		Map<Class<? extends AbstractTask>, String> typeMapping = tasks.get(taskId);
 		
 		if(typeMapping!=null){
 			for(Class<?> cl: typeMapping.keySet()){
 				taskObj = cl;
 			}
 		}
+		*/
 		
-		return taskObj;
+		return getTaskById(taskId, null, null);
 	}
 
-	public static String getExistingTaskDescription(String taskId, Class<?> type) {
+	public static String getExistingTaskDescription(String taskId, Class<? extends AbstractTask> type) {
 		return tasks.get(taskId).get(type);
 	}
 	
