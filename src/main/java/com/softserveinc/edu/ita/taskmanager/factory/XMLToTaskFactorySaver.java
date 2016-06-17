@@ -28,7 +28,7 @@ public class XMLToTaskFactorySaver {
 	public static final String NAME_TAG = "name";
 	public static final String DESCR_TAG = "description";
 	public static final File XML_TASKS_FILE = new File(
-			"../TaskManager/task_names.xml");
+			"task_names.xml");
 
 	private Document document;
 	private File xmlFileName;
