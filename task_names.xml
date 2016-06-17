@@ -8,4 +8,11 @@
 </task>
 
 
+<task>
+	<id>task 323</id>
+	<name>com.softserveinc.edu.ita.taskmanager.model.PrimeNumbers</name>
+	<description> find all pairs of prime numbers existed for n (n=10)</description>
+</task>
+
+
 </tasks>
