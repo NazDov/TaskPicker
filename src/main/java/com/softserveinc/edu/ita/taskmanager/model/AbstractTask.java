@@ -90,7 +90,8 @@ public abstract class AbstractTask {
 	}
 	
 	/**
-	 * run this method if you want your output to be sent to console.
+	 * run this method if you want to get the output of your woeking module
+	 * sends object to console by default
 	 */
 	public final Object runTask(){
 		
