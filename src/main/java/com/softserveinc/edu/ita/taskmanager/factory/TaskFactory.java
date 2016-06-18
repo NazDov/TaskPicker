@@ -2,10 +2,7 @@ package com.softserveinc.edu.ita.taskmanager.factory;
 
 import com.softserveinc.edu.ita.taskmanager.model.AbstractTask;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Nazar Dovhyy
@@ -18,7 +15,7 @@ public class TaskFactory {
     /**
      *
      */
-    public static Map<String, Map<Class<? extends AbstractTask>, String>> tasks = new HashMap<>();
+    public static Map<String, Map<Class<? extends AbstractTask>, String>> tasks = new LinkedHashMap<>();
     private static Class<? extends AbstractTask> typeKey;
 
     /**
