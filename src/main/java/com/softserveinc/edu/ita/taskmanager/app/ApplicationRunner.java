@@ -42,7 +42,7 @@ public class ApplicationRunner implements Runnable {
 
         public static void main(String[] args) {
 
-            ApplicationRunner.runApplication(new WindowApplication());
+            ApplicationRunner.runApplication(new ConsoleApplication());
         }
 
     }

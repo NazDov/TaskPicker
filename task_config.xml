@@ -2,14 +2,14 @@
 <tasks>
 
 <task>
-	<id>task 199</id>
+	<id>task199</id>
 	<name>com.softserveinc.edu.ita.taskmanager.model.MyHomeWork</name>
 	<description>find sum of elements equally divided by 5</description>
 </task>
 
 
 <task>
-	<id>task 323</id>
+	<id>task323</id>
 	<name>com.softserveinc.edu.ita.taskmanager.model.PrimeNumbers</name>
 	<description> find all pairs of prime numbers existed for n (n=10)</description>
 </task>
