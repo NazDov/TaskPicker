@@ -66,8 +66,6 @@ public abstract class AbstractTask {
      */
     public final Object runTask() {
 
-        ViewStrategy.TO_CONSOLE.show(returnCalculatedOutput());
-
         return this.returnCalculatedOutput();
     }
 
