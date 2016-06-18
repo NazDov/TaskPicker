@@ -50,6 +50,12 @@ public class WindowApplication extends JFrame implements ActionListener, Applica
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
+        List<String> allKeys = TaskFactory.getAllKeys();
+
+        comboBoxMsgs = allKeys.toArray(new String[allKeys.size()]);
+
+        System.out.println("combo box items: " + Arrays.toString(comboBoxMsgs));
+
         taskNamesBox = new javax.swing.JComboBox<>();
         taskNameLabel = new javax.swing.JLabel();
         descrField = new javax.swing.JTextField();
@@ -184,6 +190,17 @@ public class WindowApplication extends JFrame implements ActionListener, Applica
                                 .addGap(36, 36, 36)));
 
         pack();
+
+        // making sure to launch swing components in the EDT thread only
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                setVisible(true);
+            }
+        });
+
+
     }// </editor-fold>
 
     private void descrFieldActionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,22 +272,11 @@ public class WindowApplication extends JFrame implements ActionListener, Applica
         /*
 		/* Create and display the form */
 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                setVisible(true);
-            }
-        });
 
-
-
-        List<String> allKeys = TaskFactory.getAllKeys();
-
-        comboBoxMsgs = allKeys.toArray(new String[allKeys.size()]);
-
-        System.out.println("combo box items: " + Arrays.toString(comboBoxMsgs));
 
         initComponents();
 
-
     }
+
+
 }
